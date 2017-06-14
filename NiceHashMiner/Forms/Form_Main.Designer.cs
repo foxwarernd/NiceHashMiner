@@ -44,6 +44,8 @@
             this.toolStripStatusLabelBalanceBTCCode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelBalanceDollarText = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelBalanceDollarValue = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusBTCExRateLabelText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelBTCExRateValue = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
             this.linkLabelCheckStats = new System.Windows.Forms.LinkLabel();
             this.labelWorkerName = new System.Windows.Forms.Label();
@@ -59,6 +61,7 @@
             this.flowLayoutPanelRates = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label_NotProfitable = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.devicesListViewEnableControl1 = new NiceHashMiner.Forms.Components.DevicesListViewEnableControl();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -66,7 +69,7 @@
             // 
             // buttonStartMining
             // 
-            this.buttonStartMining.Location = new System.Drawing.Point(452, 146);
+            this.buttonStartMining.Location = new System.Drawing.Point(590, 144);
             this.buttonStartMining.Name = "buttonStartMining";
             this.buttonStartMining.Size = new System.Drawing.Size(89, 23);
             this.buttonStartMining.TabIndex = 6;
@@ -129,10 +132,12 @@
             this.toolStripStatusLabelBalanceBTCCode,
             this.toolStripStatusLabelBalanceDollarText,
             this.toolStripStatusLabelBalanceDollarValue,
+            this.toolStripStatusBTCExRateLabelText,
+            this.toolStripStatusLabelBTCExRateValue,
             this.toolStripStatusLabel10});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 266);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 368);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(565, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(689, 25);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -194,6 +199,19 @@
             this.toolStripStatusLabelBalanceDollarValue.Size = new System.Drawing.Size(16, 20);
             this.toolStripStatusLabelBalanceDollarValue.Text = "$ ";
             // 
+            // toolStripStatusBTCExRateLabelText
+            // 
+            this.toolStripStatusBTCExRateLabelText.Name = "toolStripStatusBTCExRateLabelText";
+            this.toolStripStatusBTCExRateLabelText.Size = new System.Drawing.Size(16, 20);
+            this.toolStripStatusBTCExRateLabelText.Text = "$ ";
+            // 
+            // toolStripStatusLabelBTCExRateValue
+            // 
+            this.toolStripStatusLabelBTCExRateValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.toolStripStatusLabelBTCExRateValue.Name = "toolStripStatusLabelBTCExRateValue";
+            this.toolStripStatusLabelBTCExRateValue.Size = new System.Drawing.Size(31, 20);
+            this.toolStripStatusLabelBTCExRateValue.Text = "0.00";
+            // 
             // toolStripStatusLabel10
             // 
             this.toolStripStatusLabel10.Image = global::NiceHashMiner.Properties.Resources.NHM_Cash_Register_Bitcoin_transparent;
@@ -235,7 +253,7 @@
             // linkLabelVisitUs
             // 
             this.linkLabelVisitUs.AutoSize = true;
-            this.linkLabelVisitUs.Location = new System.Drawing.Point(270, 9);
+            this.linkLabelVisitUs.Location = new System.Drawing.Point(266, 15);
             this.linkLabelVisitUs.Name = "linkLabelVisitUs";
             this.linkLabelVisitUs.Size = new System.Drawing.Size(150, 13);
             this.linkLabelVisitUs.TabIndex = 8;
@@ -246,7 +264,7 @@
             // buttonStopMining
             // 
             this.buttonStopMining.Enabled = false;
-            this.buttonStopMining.Location = new System.Drawing.Point(452, 173);
+            this.buttonStopMining.Location = new System.Drawing.Point(590, 173);
             this.buttonStopMining.Name = "buttonStopMining";
             this.buttonStopMining.Size = new System.Drawing.Size(89, 23);
             this.buttonStopMining.TabIndex = 7;
@@ -256,7 +274,7 @@
             // 
             // buttonBenchmark
             // 
-            this.buttonBenchmark.Location = new System.Drawing.Point(452, 91);
+            this.buttonBenchmark.Location = new System.Drawing.Point(590, 91);
             this.buttonBenchmark.Name = "buttonBenchmark";
             this.buttonBenchmark.Size = new System.Drawing.Size(89, 23);
             this.buttonBenchmark.TabIndex = 4;
@@ -266,7 +284,7 @@
             // 
             // buttonSettings
             // 
-            this.buttonSettings.Location = new System.Drawing.Point(452, 117);
+            this.buttonSettings.Location = new System.Drawing.Point(590, 115);
             this.buttonSettings.Name = "buttonSettings";
             this.buttonSettings.Size = new System.Drawing.Size(89, 23);
             this.buttonSettings.TabIndex = 5;
@@ -280,7 +298,7 @@
             this.buttonHelp.FlatAppearance.BorderSize = 0;
             this.buttonHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonHelp.Image = global::NiceHashMiner.Properties.Resources.NHM_help_50px;
-            this.buttonHelp.Location = new System.Drawing.Point(489, 0);
+            this.buttonHelp.Location = new System.Drawing.Point(624, 0);
             this.buttonHelp.Name = "buttonHelp";
             this.buttonHelp.Size = new System.Drawing.Size(52, 60);
             this.buttonHelp.TabIndex = 11;
@@ -324,9 +342,10 @@
             this.flowLayoutPanelRates.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanelRates.Location = new System.Drawing.Point(3, 16);
             this.flowLayoutPanelRates.Name = "flowLayoutPanelRates";
-            this.flowLayoutPanelRates.Size = new System.Drawing.Size(536, 40);
+            this.flowLayoutPanelRates.Size = new System.Drawing.Size(662, 26);
             this.flowLayoutPanelRates.TabIndex = 107;
             this.flowLayoutPanelRates.WrapContents = false;
+            this.flowLayoutPanelRates.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelRates_Paint);
             // 
             // groupBox1
             // 
@@ -334,7 +353,7 @@
             this.groupBox1.Controls.Add(this.flowLayoutPanelRates);
             this.groupBox1.Location = new System.Drawing.Point(11, 202);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(542, 59);
+            this.groupBox1.Size = new System.Drawing.Size(668, 45);
             this.groupBox1.TabIndex = 108;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Group/Device Rates:";
@@ -350,6 +369,17 @@
             this.label_NotProfitable.TabIndex = 110;
             this.label_NotProfitable.Text = "CURRENTLY MINING NOT PROFITABLE.";
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(465, 15);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(54, 13);
+            this.linkLabel1.TabIndex = 110;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "gaco-mod";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGacoVisitUs_LinkClicked);
+            // 
             // devicesListViewEnableControl1
             // 
             this.devicesListViewEnableControl1.BenchmarkCalculation = null;
@@ -359,14 +389,15 @@
             this.devicesListViewEnableControl1.Location = new System.Drawing.Point(11, 91);
             this.devicesListViewEnableControl1.Name = "devicesListViewEnableControl1";
             this.devicesListViewEnableControl1.SaveToGeneralConfig = false;
-            this.devicesListViewEnableControl1.Size = new System.Drawing.Size(435, 105);
+            this.devicesListViewEnableControl1.Size = new System.Drawing.Size(570, 105);
             this.devicesListViewEnableControl1.TabIndex = 109;
             // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 291);
+            this.ClientSize = new System.Drawing.Size(689, 393);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.devicesListViewEnableControl1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.labelDemoMode);
@@ -437,6 +468,9 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label_NotProfitable;
         private Forms.Components.DevicesListViewEnableControl devicesListViewEnableControl1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusBTCExRateLabelText;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelBTCExRateValue;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

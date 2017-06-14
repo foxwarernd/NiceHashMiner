@@ -5,6 +5,7 @@ using System.Text;
 namespace NiceHashMiner {
     public static class Links {
         public static string VisitURL = "https://www.nicehash.com?utm_source=NHM";
+        public static string GacoVisitURL = "https://github.com/gacopl/NiceHashMiner";
         // add version
         public static string VisitURLNew = "https://github.com/nicehash/NiceHashMiner/releases/tag/";
         // add btc adress as parameter

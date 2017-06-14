@@ -30,6 +30,7 @@ namespace NiceHashMiner
     public partial class Form_Main : Form, Form_Loading.IAfterInitializationCaller, IMainFormRatesComunication
     {
         private static string VisitURL = Links.VisitURL;
+        private static string GacoVisitURL = Links.GacoVisitURL;
 
         private Timer MinerStatsCheck;
         private Timer UpdateCheck;
@@ -51,7 +52,7 @@ namespace NiceHashMiner
         int flowLayoutPanelVisibleCount = 0;
         int flowLayoutPanelRatesIndex = 0;
 
-        const string _betaAlphaPostfixString = "";
+        const string _betaAlphaPostfixString = "-gaco-mod";
 
         private bool _isDeviceDetectionInitialized = false;
 
@@ -118,7 +119,7 @@ namespace NiceHashMiner
             toolStripStatusLabelGlobalRateText.Text = International.GetText("Form_Main_global_rate") + ":";
             toolStripStatusLabelBTCDayText.Text = "BTC/" + International.GetText("Day");
             toolStripStatusLabelBalanceText.Text = (ExchangeRateAPI.ActiveDisplayCurrency + "/") + International.GetText("Day") + "     " + International.GetText("Form_Main_balance") + ":";
-
+            toolStripStatusBTCExRateLabelText.Text = "        BTC/" + ExchangeRateAPI.ActiveDisplayCurrency;
             devicesListViewEnableControl1.InitLocale();
 
             buttonBenchmark.Text = International.GetText("Form_Main_benchmark");
@@ -145,6 +146,7 @@ namespace NiceHashMiner
             ExchangeRateAPI.ActiveDisplayCurrency = ConfigManager.GeneralConfig.DisplayCurrency;
 
             toolStripStatusLabelBalanceDollarValue.Text = "(" + ExchangeRateAPI.ActiveDisplayCurrency + ")";
+            toolStripStatusLabelBTCExRateValue.Text = ExchangeRateAPI.ConvertToActiveCurrency(Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture);
             toolStripStatusLabelBalanceText.Text = (ExchangeRateAPI.ActiveDisplayCurrency + "/") + International.GetText("Day") + "     " + International.GetText("Form_Main_balance") + ":";
             BalanceCheck_Tick(null, null); // update currency changes
 
@@ -494,7 +496,7 @@ namespace NiceHashMiner
             
             string rateBTCString = FormatPayingOutput(paying);
             string rateCurrencyString = ExchangeRateAPI.ConvertToActiveCurrency(paying * Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture)
-                + String.Format(" {0}/", ExchangeRateAPI.ActiveDisplayCurrency) + International.GetText("Day");
+                 + String.Format(" {0}/", ExchangeRateAPI.ActiveDisplayCurrency) + International.GetText("Day");
             
             ((GroupProfitControl)flowLayoutPanelRates.Controls[flowLayoutPanelRatesIndex++])
                 .UpdateProfitStats(groupName, deviceStringInfo, speedString, rateBTCString, rateCurrencyString);
@@ -528,6 +530,7 @@ namespace NiceHashMiner
             }
 
             toolStripStatusLabelBTCDayValue.Text = ExchangeRateAPI.ConvertToActiveCurrency((TotalRate * Globals.BitcoinUSDRate)).ToString("F2", CultureInfo.InvariantCulture);
+            toolStripStatusLabelBTCExRateValue.Text = ExchangeRateAPI.ConvertToActiveCurrency(Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture);
         }
 
 
@@ -554,6 +557,7 @@ namespace NiceHashMiner
                     double Amount = (Balance * Globals.BitcoinUSDRate);
                     Amount = ExchangeRateAPI.ConvertToActiveCurrency(Amount);
                     toolStripStatusLabelBalanceDollarText.Text = Amount.ToString("F2", CultureInfo.InvariantCulture);
+                    
                 }
             }
         }
@@ -566,6 +570,7 @@ namespace NiceHashMiner
             double BR = ExchangeRateAPI.GetUSDExchangeRate();
             if (BR > 0) Globals.BitcoinUSDRate = BR;
             Helpers.ConsolePrint("NICEHASH", "Current Bitcoin rate: " + Globals.BitcoinUSDRate.ToString("F2", CultureInfo.InvariantCulture));
+            toolStripStatusLabelBTCExRateValue.Text = ExchangeRateAPI.ConvertToActiveCurrency(Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture);
         }
 
 
@@ -650,6 +655,11 @@ namespace NiceHashMiner
         private void linkLabelVisitUs_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start(VisitURL);
+        }
+
+        private void linkLabelGacoVisitUs_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(GacoVisitURL);
         }
 
 
@@ -929,6 +939,11 @@ namespace NiceHashMiner
             }
 
             UpdateGlobalRate();
+        }
+
+        private void flowLayoutPanelRates_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

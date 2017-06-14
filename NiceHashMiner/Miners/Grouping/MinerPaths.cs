@@ -26,7 +26,7 @@ namespace NiceHashMiner.Miners.Grouping
             public const string ccminer_tpruvot = _bin + @"\ccminer_tpruvot\ccminer.exe";
             public const string ccminer_cryptonight = _bin + @"\ccminer_cryptonight\ccminer.exe";
             public const string ccminer_x11gost = _bin + @"\ccminer_x11gost\ccminer.exe";
-
+            public const string ccminer_sia = _bin + @"\ccminer_sia\ccminer.exe";
             /// <summary>
             /// ethminers
             /// </summary>
@@ -47,6 +47,7 @@ namespace NiceHashMiner.Miners.Grouping
 
             // root binary folder
             private const string _bin_3rdparty = @"bin_3rdparty";
+            public const string ewbf = _bin_3rdparty + @"\ewbf\miner.exe";
             public const string ClaymoreZcashMiner = _bin_3rdparty + @"\claymore_zcash\ZecMiner64.exe";
             public const string ClaymoreCryptoNightMiner = _bin_3rdparty + @"\claymore_cryptonight\NsGpuCNMiner.exe";
             public const string OptiminerZcashMiner = _bin_3rdparty + @"\optiminer_zcash_win\Optiminer.exe";
@@ -74,6 +75,8 @@ namespace NiceHashMiner.Miners.Grouping
                     return AMD_GROUP.ClaymorePath(algoType);
                 case MinerBaseType.OptiminerAMD:
                     return Data.OptiminerZcashMiner;
+                case MinerBaseType.ewbf:
+                    return Data.ewbf;
                 case MinerBaseType.excavator:
                     return Data.excavator;
                 case MinerBaseType.XmrStackCPU:
@@ -144,7 +147,10 @@ namespace NiceHashMiner.Miners.Grouping
                 if (AlgorithmType.Lbry == algorithmType || AlgorithmType.X11Gost == algorithmType) {
                     return Data.ccminer_tpruvot;
                 }
-
+                if (AlgorithmType.Sia == algorithmType)
+                {
+                    return Data.ccminer_sia;
+                }
                 return Data.ccminer_sp;
             }
             public static string ccminer_path(AlgorithmType algorithmType, DeviceGroupType nvidiaGroup) {

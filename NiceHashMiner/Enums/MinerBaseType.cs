@@ -18,6 +18,7 @@ namespace NiceHashMiner.Enums {
         ClaymoreAMD,
         OptiminerAMD,
         excavator,
+        ewbf,
         XmrStackCPU,
         ccminer_alexis,
         experimental,

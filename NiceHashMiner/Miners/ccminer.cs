@@ -58,6 +58,10 @@ namespace NiceHashMiner.Miners
                                   " --devices ";
 
             LastCommandLine += GetDevicesCommandString();
+            //if (MiningSetup.CurrentAlgorithmType == AlgorithmType.Sia)
+            //{
+            //    LastCommandLine += " -i 28";
+            //}
 
             ProcessHandle = _Start();
         }

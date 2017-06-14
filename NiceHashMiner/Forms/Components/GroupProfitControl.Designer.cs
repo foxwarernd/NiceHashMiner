@@ -42,7 +42,7 @@
             this.groupBoxMinerGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBoxMinerGroup.Location = new System.Drawing.Point(0, 0);
             this.groupBoxMinerGroup.Name = "groupBoxMinerGroup";
-            this.groupBoxMinerGroup.Size = new System.Drawing.Size(525, 32);
+            this.groupBoxMinerGroup.Size = new System.Drawing.Size(651, 32);
             this.groupBoxMinerGroup.TabIndex = 108;
             this.groupBoxMinerGroup.TabStop = false;
             this.groupBoxMinerGroup.Text = "Mining Devices { N/A } ";
@@ -60,7 +60,7 @@
             // labelCurentcyPerDayVaue
             // 
             this.labelCurentcyPerDayVaue.AutoSize = true;
-            this.labelCurentcyPerDayVaue.Location = new System.Drawing.Point(442, 16);
+            this.labelCurentcyPerDayVaue.Location = new System.Drawing.Point(551, 16);
             this.labelCurentcyPerDayVaue.Name = "labelCurentcyPerDayVaue";
             this.labelCurentcyPerDayVaue.Size = new System.Drawing.Size(61, 13);
             this.labelCurentcyPerDayVaue.TabIndex = 104;
@@ -70,7 +70,7 @@
             // 
             this.labelBTCRateValue.AutoSize = true;
             this.labelBTCRateValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.labelBTCRateValue.Location = new System.Drawing.Point(298, 16);
+            this.labelBTCRateValue.Location = new System.Drawing.Point(399, 16);
             this.labelBTCRateValue.Name = "labelBTCRateValue";
             this.labelBTCRateValue.Size = new System.Drawing.Size(112, 13);
             this.labelBTCRateValue.TabIndex = 105;
@@ -79,7 +79,7 @@
             // labelBTCRateIndicator
             // 
             this.labelBTCRateIndicator.AutoSize = true;
-            this.labelBTCRateIndicator.Location = new System.Drawing.Point(247, 16);
+            this.labelBTCRateIndicator.Location = new System.Drawing.Point(344, 16);
             this.labelBTCRateIndicator.Name = "labelBTCRateIndicator";
             this.labelBTCRateIndicator.Size = new System.Drawing.Size(33, 13);
             this.labelBTCRateIndicator.TabIndex = 106;
@@ -103,7 +103,7 @@
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.groupBoxMinerGroup);
             this.Name = "GroupProfitControl";
-            this.Size = new System.Drawing.Size(529, 36);
+            this.Size = new System.Drawing.Size(654, 35);
             this.groupBoxMinerGroup.ResumeLayout(false);
             this.groupBoxMinerGroup.PerformLayout();
             this.ResumeLayout(false);
