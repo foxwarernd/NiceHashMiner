@@ -1,0 +1,28 @@
+# NicehashMiner gaco-mod
+First we need to set up EWBF
+1. Go to devices and algorithms settings
+2. Disable all algo's and leave EWBF enabled only
+3. Click on EWBF and change on right side and set Benchmark speed to some value (100 for ex)
+4. Save and start nicehash miner, wait a while until its minning speed is stabilized, write down hashrate
+5. Go back to EWBF algorithm settings and put that hashrate int
+
+SIA:
+Do the same as above for SIA but wen putting in the hashrate add '000000' to scale for MH/s
+
+Dual Mining:
+Start with DaggerPascal
+1. Do the same as for EWBF but
+2. When miner is running and miner window is active you can use '+' and '-' on your keyboard
+3. to find the right balance of ETH/Second algo in terms of profit once you get that write it down
+4. Go back to DaggerPascal settings and in 'Extra Launch parameters' add '-dcri 100' where 100 is the value you found yourself by experimenting 
+6. Do the same for DaggerLbry Sia and Decred
+
+Now you can start benchmarking
+Open benchmark make sure you choose precise benchmark
+Check all algos except EWBF and SIA as this you benchmarked manually
+Hit start and wait, once it is done YOU're ready to start mining and make profits :)
+
+REMEMBER to find out dcri setting first before doing benchmark to make sure automatic switching will work as desired
+TIPS: 19EzHxJ5MD6sCD5Bwp1Z7n4rPboGrvoWnL
+Don't hesitate to contribute i aim to keep this updated at least until original nicehashminer will start accepting patches more quickly
+THANKS AND HAVE FUN
