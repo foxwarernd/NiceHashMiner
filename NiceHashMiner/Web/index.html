@@ -19,7 +19,11 @@
                 if (dObj[0].Devices) {
                     var devices = dObj[0].Devices.split(',')
                     var dataString = "<h2> Currently mining:</h2>";
-                
+                    var BTCExRate = dObj[0].BTCExRate;
+                    var BTCBalance = dObj[0].BTCBalance;
+                    var currencyBalance = (BTCBalance * BTCExRate.split(" ")[0] / 1000).toFixed(2);
+
+                    var currencyName = BTCExRate.split(" ")[1];
                     function devPrint(index, element, array) {
                         data = "<li>_device_</li>"
                         dataString += data.replace("_device_", array[element])
@@ -28,7 +32,6 @@
                     var totalSpeed = 0;
                     var totalRateBTC = 0.0;
                     var totalRateCurrency = 0.0;
-                    var currencyName = dObj[1].RateCurrency.split(' ')[1];
                     for (var i = 1; i < dObj.length; i++) {
                         currentHashObj = dObj[i];
                         var rateBTC = currentHashObj.RateBTC.split(' ');
@@ -43,13 +46,13 @@
                         dataString += data;
 
                     }
-                    var BTCExRate = totalRateCurrency/totalRateBTC * 1000
-                    $("#totalsDiv").html("<h2>Total rate: " + totalRateBTC.toFixed(5) + " mBTC/Day " + totalRateCurrency.toFixed(2) + " " +  currencyName + "     Bitcoin Ex Rate: " + BTCExRate.toFixed(2) + " " +  currencyName.substring(0, 3) +  "</h2>");
+                    
+                    $("#totalsDiv").html("<h2>Total rate: " + totalRateBTC.toFixed(5) + " mBTC/Day (" + totalRateCurrency.toFixed(2) + " " +  currencyName + "/Day) <br><br> Balance: " + BTCBalance + " mBTC (" + currencyBalance + " " + currencyName + ") <br><br> Bitcoin Ex Rate: " + BTCExRate + "</h2>");
                     $("#statsDiv").html(dataString);
                 } else {
-                    $("#statsDiv").html("<h2>Miner is not mining</h2>")
+                    $("#statsDiv").html("<h2 class='bold-red'>Miner is not mining</h2>")
                 }
-            }).fail(function() { $("#statsDiv").html("<h2>Miner is not mining</h2>"); })
+            }).fail(function() { $("#statsDiv").html("<h2 class='bold-red'><red>Miner is not mining</red></h2>"); $("#totalsDiv").html(""); })
            
         }
 
@@ -67,9 +70,9 @@
 </head>
 <body>
     <h1>NiceHash Miner Web Monitor</h1>
-    <div id="totalsDiv">aaaa</div>
+    <div id="totalsDiv"></div>
     <hr/>
-    <div id="statsDiv"><h2>Miner is not mining</h2></div>
+    <div id="statsDiv"></div>
 
 
    

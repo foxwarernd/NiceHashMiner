@@ -513,19 +513,25 @@ namespace NiceHashMiner
 
             ((GroupProfitControl)flowLayoutPanelRates.Controls[flowLayoutPanelRatesIndex++])
                 .UpdateProfitStats(groupName, deviceStringInfo, speedString, rateBTCString, rateCurrencyString);
-         
+
+            double Balance = NiceHashStats.GetBalance(textBoxBTCAddress.Text.Trim(), textBoxBTCAddress.Text.Trim() + "." + textBoxWorkerName.Text.Trim());
+
             Dictionary<string, string> localDevNames = new Dictionary<string, string>();
             localDevNames = new Dictionary<string, string>();
             localDevNames["Devices"] = String.Join(",", devNames.ToArray());
-
+            localDevNames["BTCExRate"] = ExchangeRateAPI.ConvertToActiveCurrency(Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture)
+                 + " " + ExchangeRateAPI.ActiveDisplayCurrency;
+            localDevNames["BTCBalance"] = (Balance * 1000).ToString("F5", CultureInfo.InvariantCulture);
             bool found = false;
             int pos = 0;
             foreach (Dictionary<string, string> foundData in hashData)
             {
                 if (foundData.ContainsKey("Devices"))
                 {
+                        hashData[pos] = localDevNames;
                         found = true;
-                        break;             
+                        break;
+                  
                 }
                 pos++;
             }
