@@ -1,3 +1,40 @@
+
+# NicehashMiner 1.7.5.13-gaco-mod
+> DualMining for NVIDIA, EWBF (ZEC) miner, SIA miner - it all gives ~20% performance boost plus other extras!
+> It all switches perfectly to the best profitable algorithm for you
+
+### List of additional features
+* DualMining for NVIDIA (Ether with SIA,DCR,LBRY,PASC) (Claymore ETH DualMiner 9.5)
+* EWBF Equihash (ZEC) miner for NVIDIA
+* CCMINER_SIA (SIA) miner for NVIDIA
+* WebManager allows you to check on your miner stats through browser!
+* BTC Rate exchange ticker in app
+
+## This is based on work of:
+DillonN, GTNADAM, friedkiwi THANKS!
+
+## All merged and built and ready to use with additional fixes and enhancements from me:
+* EWBF mines on devices you choose, or NHM algorithms, instead of mining on all devices at once (sic!)
+* WebManager info enhancements
+* WebManager stability fixes
+
+## What is not working:
+* EWBF and CCMINER_SIA benchmarks
+* DualMINING benchmarks works only in precise benchmark mode
+
+# PLEASE READ INCLUDED 'HOW-TO' on how to set it all up properly
+
+# TIPS (if you want more in future): 19EzHxJ5MD6sCD5Bwp1Z7n4rPboGrvoWnL
+
+### App should download miners binaries automatically
+
+# THANKS AND HAVE FUN !!! :)
+
+Don't hesitate to contribute I intend to keep this updated at least until original nicehashminer starts to keep up with updates
+
+
+---------------------------------------------------------------------------------------------------------------------
+
 # NiceHash Miner
 
 - [Introduction](#introduction)
