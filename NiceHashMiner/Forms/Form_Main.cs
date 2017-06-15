@@ -768,8 +768,10 @@ namespace NiceHashMiner
 
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {           
-            StopMining();
+        {
+            if (devicesListViewEnableControl1.IsMining) { 
+                StopMining();
+            }
             MessageBoxManager.Unregister();
         }        
 
