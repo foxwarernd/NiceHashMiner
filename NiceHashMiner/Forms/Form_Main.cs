@@ -541,8 +541,8 @@ namespace NiceHashMiner
             }
 
 
-
-
+            string[] devicesStrings = deviceStringInfo.Trim('{',' ').Trim(' ','}').Split(new string[] { ", " }, StringSplitOptions.None);
+           
             Dictionary<string,string> localData = new Dictionary<string, string>();
 
             localData = new Dictionary<string, string>();
@@ -551,7 +551,7 @@ namespace NiceHashMiner
             localData["RateBTC"] = rateBTCString;
             localData["RateCurrency"] = rateCurrencyString;
             localData["GroupName"] = groupName;
-
+           
             found = false;
             pos = 0;
             foreach (Dictionary<string,string> foundData in hashData){
@@ -563,12 +563,26 @@ namespace NiceHashMiner
                         found = true;
                         break;
                     }
+                    else
+                    {
+                        foreach (string deviceString in devicesStrings)
+                        {
+                            if (foundData["DeviceInfo"].Contains(deviceString))
+                            {
+                                hashData[pos] = localData;
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
                 }
                 pos++;
             }
 
             if (!found)
             {
+                
                 hashData.Add(localData);
             }
             
