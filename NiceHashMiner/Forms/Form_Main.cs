@@ -35,6 +35,7 @@ namespace NiceHashMiner
     {
         private static string VisitURL = Links.VisitURL;
         private static string GacoVisitURL = Links.GacoVisitURL;
+        private static string WebManagerVisitUrl = "http://127.0.0.1:8888";
 
         private Timer MinerStatsCheck;
         private Timer UpdateCheck;
@@ -551,7 +552,7 @@ namespace NiceHashMiner
             localData["RateBTC"] = rateBTCString;
             localData["RateCurrency"] = rateCurrencyString;
             localData["GroupName"] = groupName;
-           
+
             found = false;
             pos = 0;
             foreach (Dictionary<string,string> foundData in hashData){
@@ -747,6 +748,10 @@ namespace NiceHashMiner
             System.Diagnostics.Process.Start(GacoVisitURL);
         }
 
+        private void linkLabelWebManager_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start(WebManagerVisitUrl);
+        }
 
         private void linkLabelCheckStats_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -1051,5 +1056,6 @@ namespace NiceHashMiner
         {
 
         }
+
     }
 }

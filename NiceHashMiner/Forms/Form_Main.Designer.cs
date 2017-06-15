@@ -63,6 +63,7 @@
             this.label_NotProfitable = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.devicesListViewEnableControl1 = new NiceHashMiner.Forms.Components.DevicesListViewEnableControl();
+            this.linkLabelWebManager = new System.Windows.Forms.LinkLabel();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -392,11 +393,23 @@
             this.devicesListViewEnableControl1.Size = new System.Drawing.Size(570, 105);
             this.devicesListViewEnableControl1.TabIndex = 109;
             // 
+            // linkLabelWebManager
+            // 
+            this.linkLabelWebManager.AutoSize = true;
+            this.linkLabelWebManager.Location = new System.Drawing.Point(465, 68);
+            this.linkLabelWebManager.Name = "linkLabelWebManager";
+            this.linkLabelWebManager.Size = new System.Drawing.Size(72, 13);
+            this.linkLabelWebManager.TabIndex = 111;
+            this.linkLabelWebManager.TabStop = true;
+            this.linkLabelWebManager.Text = "WebManager";
+            this.linkLabelWebManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebManager_LinkClicked);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 393);
+            this.Controls.Add(this.linkLabelWebManager);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.devicesListViewEnableControl1);
             this.Controls.Add(this.groupBox1);
@@ -471,6 +484,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusBTCExRateLabelText;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelBTCExRateValue;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabelWebManager;
     }
 }
 

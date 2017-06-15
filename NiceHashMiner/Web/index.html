@@ -18,7 +18,7 @@
             data = $.getJSON("stats.json", function (dObj) {
                 if (dObj[0].Devices) {
                     var devices = dObj[0].Devices.split(',')
-                    var dataString = "<h2> Currently mining:</h2>";
+                    var dataString = "<h2> Currently mining devices:</h2>";
                     var BTCExRate = dObj[0].BTCExRate;
                     var BTCBalance = dObj[0].BTCBalance;
                     var currencyBalance = (BTCBalance * BTCExRate.split(" ")[0] / 1000).toFixed(2);
@@ -29,6 +29,7 @@
                         dataString += data.replace("_device_", array[element])
                     }
                     devices.forEach(devPrint);
+                    dataString += "<h2>Details:</h2>"
                     var totalSpeed = 0;
                     var totalRateBTC = 0.0;
                     var totalRateCurrency = 0.0;
@@ -36,7 +37,7 @@
                         currentHashObj = dObj[i];
                         var rateBTC = currentHashObj.RateBTC.split(' ');
                         var rateCurrency = currentHashObj.RateCurrency.split(' ');
-                        data = "<h2>_type_</h2><pre>Speed: _speed_ Rate: _btcrate_ (_currate_)</pre> <br />";
+                        data = "<h4>_type_</h4><pre>Speed: _speed_ Rate: _btcrate_ (_currate_)</pre>";
                         data = data.replace("_type_", currentHashObj.DeviceInfo);
                         data = data.replace("_speed_", currentHashObj.Speed);
                         data = data.replace("_btcrate_", currentHashObj.RateBTC);
