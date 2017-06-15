@@ -418,9 +418,15 @@ namespace NiceHashMiner.Miners {
         public void MinerStatsCheck(Dictionary<AlgorithmType, NiceHashSMA> NiceHashData) {
             double CurrentProfit = 0.0d;
             _mainFormRatesComunication.ClearRates(_runningGroupMiners.Count);
+            List<String> devNames = new List<String>();
+            foreach (var MD in _miningDevices)
+            {
+                devNames.Add(MD.Device.NameCount.ToString() + ' ' + MD.Device.Name);
+            }
             foreach (var groupMiners in _runningGroupMiners.Values) {
                 Miner m = groupMiners.Miner;
-
+                
+                //devName = m.MinerDeviceName;
                 // skip if not running
                 if (!m.IsRunning) continue;
 
@@ -441,7 +447,7 @@ namespace NiceHashMiner.Miners {
                 }
                 CurrentProfit += groupMiners.CurrentRate;
                 // Update GUI
-                _mainFormRatesComunication.AddRateInfo(m.MinerTAG(), groupMiners.DevicesInfoString, AD, groupMiners.CurrentRate, m.IsAPIReadException);
+                _mainFormRatesComunication.AddRateInfo(m.MinerTAG(), groupMiners.DevicesInfoString, AD, groupMiners.CurrentRate, devNames, m.IsAPIReadException);
             }
         }
 

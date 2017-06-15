@@ -497,7 +497,7 @@ namespace NiceHashMiner
             this.Size = new Size(this.Size.Width, MainFormHeight + groupBox1Height);
         }
 
-        public void AddRateInfo(string groupName, string deviceStringInfo, APIData iAPIData, double paying, bool isApiGetException) {
+        public void AddRateInfo(string groupName, string deviceStringInfo, APIData iAPIData, double paying, List<String> devNames, bool isApiGetException) {
             string ApiGetExceptionString = isApiGetException ? "**" : "";
 
             string speedString = Helpers.FormatDualSpeedOutput(iAPIData.Speed, iAPIData.SecondarySpeed) + iAPIData.AlgorithmName + ApiGetExceptionString;
@@ -508,9 +508,32 @@ namespace NiceHashMiner
             string rateBTCString = FormatPayingOutput(paying);
             string rateCurrencyString = ExchangeRateAPI.ConvertToActiveCurrency(paying * Globals.BitcoinUSDRate).ToString("F2", CultureInfo.InvariantCulture)
                  + String.Format(" {0}/", ExchangeRateAPI.ActiveDisplayCurrency) + International.GetText("Day");
-            
+
             ((GroupProfitControl)flowLayoutPanelRates.Controls[flowLayoutPanelRatesIndex++])
                 .UpdateProfitStats(groupName, deviceStringInfo, speedString, rateBTCString, rateCurrencyString);
+         
+            Dictionary<string, string> localDevNames = new Dictionary<string, string>();
+            localDevNames = new Dictionary<string, string>();
+            localDevNames["Devices"] = String.Join(",", devNames.ToArray());
+
+            bool found = false;
+            int pos = 0;
+            foreach (Dictionary<string, string> foundData in hashData)
+            {
+                if (foundData.ContainsKey("Devices"))
+                {
+                        found = true;
+                        break;             
+                }
+                pos++;
+            }
+            if (!found)
+            {
+                hashData.Add(localDevNames);
+            }
+
+
+
 
             Dictionary<string,string> localData = new Dictionary<string, string>();
 
@@ -521,14 +544,17 @@ namespace NiceHashMiner
             localData["RateCurrency"] = rateCurrencyString;
             localData["GroupName"] = groupName;
 
-            bool found = false;
-            int pos = 0;
+            found = false;
+            pos = 0;
             foreach (Dictionary<string,string> foundData in hashData){
-                if (foundData["GroupName"] == groupName)
+                if (foundData.ContainsKey("GroupName"))
                 {
-                    hashData[pos] = localData;
-                    found = true;
-                    break;
+                    if (foundData["GroupName"] == groupName)
+                    {
+                        hashData[pos] = localData;
+                        found = true;
+                        break;
+                    }
                 }
                 pos++;
             }
@@ -537,7 +563,7 @@ namespace NiceHashMiner
             {
                 hashData.Add(localData);
             }
-
+            
             UpdateGlobalRate();
         }
 
@@ -994,6 +1020,7 @@ namespace NiceHashMiner
 
             if (ConfigManager.GeneralConfig.WebInterfaceEnabled)
                 server.Stop();
+                File.WriteAllText(Path.Combine(((DriveDirectory)server.Root).Path, "stats.json"), "[ { \"Status\": \"Nicehash Miner is stopped\" } ]");
             UpdateGlobalRate();
         }
 
