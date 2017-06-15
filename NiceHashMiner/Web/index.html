@@ -18,30 +18,38 @@
             data = $.getJSON("stats.json", function (dObj) {
                 if (dObj[0].Devices) {
                     var devices = dObj[0].Devices.split(',')
-                    var dataString = "<h2> Devices List:</h2>";
+                    var dataString = "<h2> Currently mining:</h2>";
                 
                     function devPrint(index, element, array) {
                         data = "<li>_device_</li>"
                         dataString += data.replace("_device_", array[element])
                     }
                     devices.forEach(devPrint);
-                
+                    var totalSpeed = 0;
+                    var totalRateBTC = 0.0;
+                    var totalRateCurrency = 0.0;
+                    var currencyName = dObj[1].RateCurrency.split(' ')[1];
                     for (var i = 1; i < dObj.length; i++) {
                         currentHashObj = dObj[i];
+                        var rateBTC = currentHashObj.RateBTC.split(' ');
+                        var rateCurrency = currentHashObj.RateCurrency.split(' ');
                         data = "<h2>_type_</h2><pre>Speed: _speed_ Rate: _btcrate_ (_currate_)</pre> <br />";
                         data = data.replace("_type_", currentHashObj.DeviceInfo);
                         data = data.replace("_speed_", currentHashObj.Speed);
                         data = data.replace("_btcrate_", currentHashObj.RateBTC);
                         data = data.replace("_currate_", currentHashObj.RateCurrency);
-
+                        totalRateBTC += parseFloat(rateBTC[0]);
+                        totalRateCurrency += parseFloat(rateCurrency[0]);
                         dataString += data;
 
                     }
+                    var BTCExRate = totalRateCurrency/totalRateBTC * 1000
+                    $("#totalsDiv").html("<h2>Total rate: " + totalRateBTC.toFixed(5) + " mBTC/Day " + totalRateCurrency.toFixed(2) + " " +  currencyName + "     Bitcoin Ex Rate: " + BTCExRate.toFixed(2) + " " +  currencyName.substring(0, 3) +  "</h2>");
                     $("#statsDiv").html(dataString);
                 } else {
                     $("#statsDiv").html("<h2>Miner is not mining</h2>")
                 }
-            })
+            }).fail(function() { $("#statsDiv").html("<h2>Miner is not mining</h2>"); })
            
         }
 
@@ -59,6 +67,7 @@
 </head>
 <body>
     <h1>NiceHash Miner Web Monitor</h1>
+    <div id="totalsDiv">aaaa</div>
     <hr/>
     <div id="statsDiv"><h2>Miner is not mining</h2></div>
 

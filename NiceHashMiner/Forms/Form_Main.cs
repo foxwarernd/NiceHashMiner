@@ -109,6 +109,8 @@ namespace NiceHashMiner
             ClearRatesALL();
         }
 
+      
+
         private void InitLocalization() {
             MessageBoxManager.Unregister();
             MessageBoxManager.Yes = International.GetText("Global_Yes");
@@ -741,9 +743,8 @@ namespace NiceHashMiner
 
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            MinersManager.StopAllMiners();
-
+        {           
+            StopMining();
             MessageBoxManager.Unregister();
         }        
 
@@ -985,6 +986,7 @@ namespace NiceHashMiner
             {
                 if (ConfigManager.GeneralConfig.WebInterfaceEnabled == true)
                     server.Start();
+                    server.Timeout = 500;
             }
             catch (Exception e)
             {
@@ -1019,8 +1021,9 @@ namespace NiceHashMiner
             }
 
             if (ConfigManager.GeneralConfig.WebInterfaceEnabled)
-                server.Stop();
                 File.WriteAllText(Path.Combine(((DriveDirectory)server.Root).Path, "stats.json"), "[ { \"Status\": \"Nicehash Miner is stopped\" } ]");
+                server.Stop();
+                
             UpdateGlobalRate();
         }
 
