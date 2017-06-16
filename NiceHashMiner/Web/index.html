@@ -37,7 +37,7 @@
                         currentHashObj = dObj[i];
                         var rateBTC = currentHashObj.RateBTC.split(' ');
                         var rateCurrency = currentHashObj.RateCurrency.split(' ');
-                        data = "<h4>_type_</h4><pre>Speed: _speed_ Rate: _btcrate_ (_currate_)</pre>";
+                        data = "<h4>_type_</h4><pre><h3>Speed: _speed_ Rate: _btcrate_ (_currate_)</h3></pre>";
                         data = data.replace("_type_", currentHashObj.DeviceInfo);
                         data = data.replace("_speed_", currentHashObj.Speed);
                         data = data.replace("_btcrate_", currentHashObj.RateBTC);

@@ -555,8 +555,7 @@ namespace NiceHashMiner
 
             found = false;
             pos = 0;
-            List<object> tempData = new List<object>(hashData);
-            foreach (Dictionary<string,string> foundData in tempData){
+            foreach (Dictionary<string,string> foundData in hashData.ToArray()){
                 if (foundData.ContainsKey("GroupName"))
                 {
                     if (foundData["GroupName"] == groupName)
@@ -571,8 +570,8 @@ namespace NiceHashMiner
                         {
                             if (foundData["DeviceInfo"].Contains(deviceString))
                             {
-                                hashData[pos] = localData;
-                                found = true;
+                                hashData.RemoveAt(pos);
+                                pos--;
                                 break;
                             }
                         }
