@@ -555,7 +555,8 @@ namespace NiceHashMiner
 
             found = false;
             pos = 0;
-            foreach (Dictionary<string,string> foundData in hashData){
+            List<object> tempData = new List<object>(hashData);
+            foreach (Dictionary<string,string> foundData in tempData){
                 if (foundData.ContainsKey("GroupName"))
                 {
                     if (foundData["GroupName"] == groupName)
