@@ -44,20 +44,20 @@ namespace NiceHashMiner.Miners
 
         public override void Start(string url, string btcAdress, string worker)
         {
-            LastCommandLine = GetDevicesCommandString() + "--server " + url.Split(':')[0] + " --user " + btcAdress + "." + worker + " --pass x --port " + url.Split(':')[1] + " --api 0.0.0.0:" + APIPort;
+            LastCommandLine = GetDevicesCommandString() + " --server " + url.Split(':')[0] + " --user " + btcAdress + "." + worker + " --pass x --port " + url.Split(':')[1] + " --api 0.0.0.0:" + APIPort;
             ProcessHandle = _Start();
         }
 
         protected override string GetDevicesCommandString()
         {
-            string deviceStringCommand = " --cuda_devices ";
+            string deviceStringCommand = " --cuda_devices";
             foreach (var nvidia_pair in this.MiningSetup.MiningPairs)
             {
-                deviceStringCommand += nvidia_pair.Device.ID + " ";
+                deviceStringCommand += " " + nvidia_pair.Device.ID;
 
             }
 
-            deviceStringCommand += " " + ExtraLaunchParametersParser.ParseForMiningSetup(MiningSetup, DeviceType.NVIDIA);
+            deviceStringCommand += ExtraLaunchParametersParser.ParseForMiningSetup(MiningSetup, DeviceType.NVIDIA);
 
             return deviceStringCommand;
         }
