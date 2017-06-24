@@ -3,6 +3,10 @@
 > DualMining for NVIDIA, EWBF (ZEC) miner, SIA miner - it all gives ~20% performance boost plus other extras!
 > It all switches perfectly to the best profitable algorithm for you
 
+## Checkout NiceHashMiner-FarmManager from my repo 
+if you have more than one mining rig!
+https://github.com/gacopl/NiceHash-farmmanager/releases/
+
 ### List of additional features
 * DualMining for NVIDIA (Ether with SIA,DCR,LBRY,PASC) (Claymore ETH DualMiner 9.5)
 * EWBF Equihash (ZEC) miner for NVIDIA
