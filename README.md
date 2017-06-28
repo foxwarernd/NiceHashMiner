@@ -28,7 +28,7 @@ DillonN, GTNADAM, friedkiwi THANKS!
 
 # PLEASE READ INCLUDED 'HOW-TO' on how to set it all up properly
 
-# TIPS (if you want more in future): 19EzHxJ5MD6sCD5Bwp1Z7n4rPboGrvoWnL
+# TIPS (if you want more in future): 1Cnb8ievaqvsJwg5VL5xiss2EzGLYu1HD6
 
 ### App should download miners binaries automatically
 
