@@ -23,6 +23,6 @@ Check all algos except EWBF and SIA as this you benchmarked manually
 Hit start and wait, once it is done YOU're ready to start mining and make profits :)
 
 REMEMBER to find out dcri setting first before doing benchmark to make sure automatic switching will work as desired
-TIPS: 19EzHxJ5MD6sCD5Bwp1Z7n4rPboGrvoWnL
+TIPS: 1Cnb8ievaqvsJwg5VL5xiss2EzGLYu1HD6
 Don't hesitate to contribute i aim to keep this updated at least until original nicehashminer will start accepting patches more quickly
 THANKS AND HAVE FUN
