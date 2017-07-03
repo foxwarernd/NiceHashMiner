@@ -454,7 +454,14 @@ namespace NiceHashMiner
             MinersManager.MinerStatsCheck(Globals.NiceHashData);
 
             string json = JsonConvert.SerializeObject(hashData, Formatting.Indented);
-            File.WriteAllText(Path.Combine(((DriveDirectory)server.Root).Path, "stats.json"), json);
+            try
+            {
+                File.WriteAllText(Path.Combine(((DriveDirectory)server.Root).Path, "stats.json"), json);
+            }
+            catch (Exception ex)
+            {
+                // continue
+            }
         }
 
         private void InitFlowPanelStart() {

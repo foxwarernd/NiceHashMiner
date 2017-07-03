@@ -62,8 +62,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label_NotProfitable = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.devicesListViewEnableControl1 = new NiceHashMiner.Forms.Components.DevicesListViewEnableControl();
             this.linkLabelWebManager = new System.Windows.Forms.LinkLabel();
+            this.devicesListViewEnableControl1 = new NiceHashMiner.Forms.Components.DevicesListViewEnableControl();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -138,7 +138,7 @@
             this.toolStripStatusLabel10});
             this.statusStrip1.Location = new System.Drawing.Point(0, 368);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(689, 25);
+            this.statusStrip1.Size = new System.Drawing.Size(684, 25);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -381,6 +381,17 @@
             this.linkLabel1.Text = "gaco-mod";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGacoVisitUs_LinkClicked);
             // 
+            // linkLabelWebManager
+            // 
+            this.linkLabelWebManager.AutoSize = true;
+            this.linkLabelWebManager.Location = new System.Drawing.Point(465, 68);
+            this.linkLabelWebManager.Name = "linkLabelWebManager";
+            this.linkLabelWebManager.Size = new System.Drawing.Size(72, 13);
+            this.linkLabelWebManager.TabIndex = 111;
+            this.linkLabelWebManager.TabStop = true;
+            this.linkLabelWebManager.Text = "WebManager";
+            this.linkLabelWebManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebManager_LinkClicked);
+            // 
             // devicesListViewEnableControl1
             // 
             this.devicesListViewEnableControl1.BenchmarkCalculation = null;
@@ -393,22 +404,11 @@
             this.devicesListViewEnableControl1.Size = new System.Drawing.Size(570, 105);
             this.devicesListViewEnableControl1.TabIndex = 109;
             // 
-            // linkLabelWebManager
-            // 
-            this.linkLabelWebManager.AutoSize = true;
-            this.linkLabelWebManager.Location = new System.Drawing.Point(465, 68);
-            this.linkLabelWebManager.Name = "linkLabelWebManager";
-            this.linkLabelWebManager.Size = new System.Drawing.Size(72, 13);
-            this.linkLabelWebManager.TabIndex = 111;
-            this.linkLabelWebManager.TabStop = true;
-            this.linkLabelWebManager.Text = "WebManager";
-            this.linkLabelWebManager.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelWebManager_LinkClicked);
-            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 393);
+            this.ClientSize = new System.Drawing.Size(684, 393);
             this.Controls.Add(this.linkLabelWebManager);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.devicesListViewEnableControl1);
@@ -432,7 +432,7 @@
             this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(581, 330);
+            this.MinimumSize = new System.Drawing.Size(695, 330);
             this.Name = "Form_Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NiceHash Miner";
